@@ -14,7 +14,7 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const queryValue = document.getElementById('searchQuery').value;
-    fetch(`/query?q=${queryValue}`, {method: 'GET'})
+    fetch(`/search?q=${queryValue}`, {method: 'GET'})
     .then(res=>res.json())
     .then(res=>console.log(res));
     return false;

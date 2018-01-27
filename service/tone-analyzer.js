@@ -14,11 +14,7 @@ module.exports = {
     };
 
     tone_analyzer.tone(params, function(err, tone) {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(err, tone.document_tone.tones);
-      }
+      callback(err, tone.document_tone.tones);
     });
   }
 };

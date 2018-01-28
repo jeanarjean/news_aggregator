@@ -14,7 +14,11 @@ module.exports = {
     };
 
     tone_analyzer.tone(params, function(err, tone) {
-      callback(err, tone.document_tone.tones);
+      var tones = [];
+      if (tone) {
+        if (tone.document_tone) tones = tone.document_tone.tones;
+      }
+      callback(err, tones);
     });
   }
 };

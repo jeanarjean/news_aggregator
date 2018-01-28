@@ -10,22 +10,25 @@ module.exports = {
     newsapi.v2.everything({   
       q: keyword,
       language: 'en',
+      pageSize: 5,
+      page: 1,
+      sortBy: 'relevancy',
     }).then(response => {
       if(response.status == "ok"){
-        async.each(response.articles, function (item, callback){ 
+        async.each(response.articles, function (item, callback){
           getFullText(item.url, function( error, fullText){
-          var article = {
-            title: item.title,
-            image: item.urlToImage,
-            newsText: fullText,
-            url: item.url
-          };
-          news.push(article);
-          callback();
+            var article = {
+              title: item.title,
+              image: item.urlToImage,
+              newsText: fullText,
+              url: item.url
+            };
+            news.push(article);
+            callback();
+          });
+        }, function(err) {
+          callback(err, news);
         });
-      }, function(err) {
-        callback(err, news);
-      });
       }
     });
   }    

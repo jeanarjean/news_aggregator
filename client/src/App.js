@@ -43,7 +43,9 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="container">
-
+                    <img src="/saladBowl.jpg" width="400px"></img>
+                    <h4 className="text-muted">Just toss my shit up</h4>
+                    <br/>
                     <SearchBar handleSubmit={this.handleSubmit}/>
                     <CenterElement>
                         <BeatLoader
@@ -71,7 +73,6 @@ const SearchBar = (props) => {
                 <div className="col-3"></div>
                 <div className="col-6">
                     <FormGroup>
-                        <Label for="searchQuery">Search for anything</Label>
                         <Input className="search" type="search" autoComplete="off" name="search" id="searchQuery"
                                placeholder="Search for something"/>
                     </FormGroup>

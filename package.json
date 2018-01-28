@@ -11,8 +11,10 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "halogen": "^0.2.0",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
+    "react-spinners": "^0.2.5",
     "serve-favicon": "~2.4.5"
   }
 }

@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import Article from  './Article';
+import { BeatLoader }  from 'react-spinners';
 import './App.css';
 
 class App extends Component {
-  
-  
   constructor(props) {
     super(props);
+    this.state = {
+      loading: false
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   handleSubmit(e) {
     e.preventDefault();
+    this.state.loading = true;
+    this.setState(this.state);
     const queryValue = document.getElementById('searchQuery').value;
+    document.getElementById('searchQuery').value = '';
     fetch(`/search?q=${queryValue}`, {method: 'GET'})
     .then(res=>res.json())
-    .then(res=>console.log(res));
+    .then(res=>{
+      // Handle response
+    });
     return false;
   }
+
   state = {users: []}
 
   componentDidMount() {
@@ -38,13 +46,18 @@ class App extends Component {
         <div className="row">
           <div className="col-2"></div>
           <div className="col-8">
-              <Article/>
-              <Article/>
           </div>
           <div className="col-2"></div>
-          </div>
+        </div>
           
         </div>
+
+        <CenterElement>
+          <BeatLoader 
+            className="loader"
+            color={'#123abc'}   
+            loading={this.state.loading} />
+        </CenterElement>  
       </div>
     );
   }
@@ -67,5 +80,16 @@ const SearchBar = (props) => {
   );
 }
 
+const CenterElement = (props) => {
+  return (
+    <div className="row">
+      <div className="col-3"></div>
+      <div className="col-6">
+          {props.children}
+      </div>
+      <div className="col-3"></div>
+    </div>
+  )
+}
 
 export default App;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form, FormGroup, Label, Input} from 'reactstrap';
+import {FormGroup, Label, Input} from 'reactstrap';
 import Articles from './Articles';
 import {BeatLoader} from 'react-spinners';
 import './App.css';
@@ -39,7 +39,6 @@ class App extends Component {
 
     render() {
         const {news, query} = this.state;
-        console.log(news);
 
         return (
             <div className="App">
@@ -73,7 +72,7 @@ const SearchBar = (props) => {
                 <div className="col-6">
                     <FormGroup>
                         <Label for="searchQuery">Search for anything</Label>
-                        <Input className="search" type="search" name="search" id="searchQuery"
+                        <Input className="search" type="search" autoComplete="off" name="search" id="searchQuery"
                                placeholder="Search for something"/>
                     </FormGroup>
                 </div>

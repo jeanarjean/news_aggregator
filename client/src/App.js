@@ -3,6 +3,7 @@ import {FormGroup, Input} from 'reactstrap';
 import Articles from './Articles';
 import {BeatLoader} from 'react-spinners';
 import request from 'browser-request';
+import ReactAudioPlayer from 'react-audio-player';
 
 import './App.css';
 
@@ -66,13 +67,17 @@ class App extends Component {
                     <CenterElement>
                         <BeatLoader
                             className="loader"
-                            color={'#123abc'}
+                            color={'#36bc37'}
                             loading={this.state.loading}/>
                     </CenterElement>
                     <CenterElement>
                         {(()=>{
                             if(audioPath){
-                                return <p>{audioPath}</p>    
+                                return (
+                                    <ReactAudioPlayer
+                                    src={`http://localhost:5000/${audioPath}`}
+                                    controls
+                                    />) 
                             }
                         })()
                         }

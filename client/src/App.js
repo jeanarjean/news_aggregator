@@ -22,7 +22,6 @@ class App extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({firstLanding: false});
         this.setState({loading: true});
         const queryValue = document.getElementById('searchQuery').value;
         document.getElementById('searchQuery').value = '';
@@ -30,7 +29,7 @@ class App extends Component {
             .then(res => res.json())
             .then(news => {
                 let self = this;
-                this.setState({news: news, query: queryValue, loading: false});
+                this.setState({news: news, query: queryValue, loading: false, firstLanding: false});
 
                 let payload = {
                     text: this.getSummariesTitles(news)

@@ -13,6 +13,7 @@ module.exports = {
             var article = {
               title: newsItem.title,
               image: newsItem.image,
+              date: newsItem.date,
               url: newsItem.url,
               summary: summary,
               tones: tones

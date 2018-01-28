@@ -21,7 +21,8 @@ module.exports = {
               title: item.title,
               image: item.urlToImage,
               newsText: fullText,
-              url: item.url
+              url: item.url,
+              date: item.publishedAt
             };
             news.push(article);
             callback();

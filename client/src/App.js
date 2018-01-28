@@ -52,8 +52,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch('/search?q=asdasd')
-            .then(res => res.json())
     }
 
     render() {

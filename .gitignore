@@ -57,5 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# misc
+package-lock.json
+
 
 \.idea/

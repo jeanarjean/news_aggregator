@@ -1,5 +1,5 @@
 var nodeSummary = require ("text-summary");
-var numberSentences = 5;
+var numberSentences = 4;
 
 module.exports = {
   summarizeNews: function(newsText, callback) {

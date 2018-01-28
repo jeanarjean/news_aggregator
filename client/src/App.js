@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {FormGroup, Label, Input} from 'reactstrap';
+import {FormGroup, Input} from 'reactstrap';
 import Articles from './Articles';
 import {BeatLoader} from 'react-spinners';
+import request from 'browser-request';
+
 import './App.css';
 
 class App extends Component {
@@ -10,26 +12,40 @@ class App extends Component {
         this.state = {
             loading: false,
             news: [],
-            query: ""
+            query: "",
+            audioPath: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.state.loading = true;
-        this.setState(this.state);
+        this.setState({loading: true});
         const queryValue = document.getElementById('searchQuery').value;
         document.getElementById('searchQuery').value = '';
         fetch(`/search?q=${queryValue}`, {method: 'GET'})
             .then(res => res.json())
             .then(news => {
-                this.state.news = news;
-                this.state.query = queryValue;
-                this.state.loading = false;
-                this.setState(this.state);
+                let self = this;
+                this.setState({news: news, query: queryValue, loading: false});
+
+                let payload = {
+                    text: this.getSummaries(news)
+                }
+
+                request.post({method: 'POST', url: '/speech', body:JSON.stringify(payload), json:true}, function(err, response, body){
+                    if(err){
+                        console.error(err);
+                    }
+                    self.setState({audioPath: body.fileName});
+                });
             });
         return false;
+    }
+
+    getSummaries(news) {
+        return news.map(article => `${article.title}. ${article.summary}`)
+            .join(' ');
     }
 
     componentDidMount() {
@@ -38,7 +54,7 @@ class App extends Component {
     }
 
     render() {
-        const {news, query} = this.state;
+        const {news, query, audioPath} = this.state;
 
         return (
             <div className="App">
@@ -52,6 +68,14 @@ class App extends Component {
                             className="loader"
                             color={'#123abc'}
                             loading={this.state.loading}/>
+                    </CenterElement>
+                    <CenterElement>
+                        {(()=>{
+                            if(audioPath){
+                                return <p>{audioPath}</p>    
+                            }
+                        })()
+                        }
                     </CenterElement>
                     <div className="row">
                         <div className="col-2"></div>

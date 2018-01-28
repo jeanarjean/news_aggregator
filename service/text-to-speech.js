@@ -3,8 +3,8 @@ var uuid = require('node-uuid');
 var fs = require('fs');
 
 var textToSpeech = new TextToSpeechV1({
-  username: '062d6c83-047c-45e1-9aee-a4452b815c65',
-  password: 'A0ZQHMBRfJYc'
+  username: '8ed6abee-b9e1-434c-847b-8a4efb76e21a',
+  password: '3PICPe4z0qBE'
 });
 
 module.exports = {

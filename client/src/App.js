@@ -14,13 +14,15 @@ class App extends Component {
             loading: false,
             news: [],
             query: "",
-            audioPath: ""
+            audioPath: "",
+            firstLanding: true
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({firstLanding: false});
         this.setState({loading: true});
         const queryValue = document.getElementById('searchQuery').value;
         document.getElementById('searchQuery').value = '';
@@ -34,12 +36,14 @@ class App extends Component {
                     text: this.getSummariesTitles(news)
                 }
 
-                request.post({method: 'POST', url: '/speech', body:JSON.stringify(payload), json:true}, function(err, response, body){
-                    if(err){
-                        console.error(err);
-                    }
-                    self.setState({audioPath: body.fileName});
-                });
+                if (payload.length > 0) {
+                    request.post({method: 'POST', url: '/speech', body:JSON.stringify(payload), json:true}, function(err, response, body){
+                        if(err){
+                            console.error(err);
+                        }
+                        self.setState({audioPath: body.fileName});
+                    });
+                }
             });
         return false;
     }
@@ -54,7 +58,14 @@ class App extends Component {
     }
 
     render() {
-        const {news, query, audioPath} = this.state;
+        const {news, query, audioPath, firstLanding} = this.state;
+        var articlesBlock = news.length > 0 ? <Articles query={query} news={this.state.news}/> : null;
+        var noData = null;
+        if (!firstLanding && news.length === 0) {
+            noData = <div>No recent news are available for this keyword</div>;
+        } else {
+            noData = null;
+        }
 
         return (
             <div className="App">
@@ -84,7 +95,8 @@ class App extends Component {
                     <div className="row">
                         <div className="col-2"></div>
                         <div className="col-8">
-                            {news.length > 0 ? <Articles query={query} news={this.state.news}/> : null}
+                            {articlesBlock}
+                            {noData}
                         </div>
                         <div className="col-2"></div>
                     </div>

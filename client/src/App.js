@@ -31,7 +31,7 @@ class App extends Component {
                 this.setState({news: news, query: queryValue, loading: false});
 
                 let payload = {
-                    text: this.getSummaries(news)
+                    text: this.getSummariesTitles(news)
                 }
 
                 request.post({method: 'POST', url: '/speech', body:JSON.stringify(payload), json:true}, function(err, response, body){
@@ -44,9 +44,8 @@ class App extends Component {
         return false;
     }
 
-    getSummaries(news) {
-        return news.map(article => `${article.title}. ${article.summary}`)
-            .join(' ');
+    getSummariesTitles(news) {
+        return news.map(article => article.title).join(' ');
     }
 
     componentDidMount() {

@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "4.0.0",
     "browser-request": "^0.3.3",
+    "moment": "^2.20.1",
+    "bootstrap": "4.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-moment": "^0.7.0",
     "react-scripts": "1.1.0",
     "react-spinners": "^0.2.5",
     "reactstrap": "^5.0.0-alpha.4",

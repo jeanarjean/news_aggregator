@@ -4,6 +4,7 @@ import {
      CardFooter
 } from 'reactstrap';
 import './Articles.css';
+import Moment from 'react-moment';
 
 class Articles extends Component {
     render() {
@@ -11,7 +12,7 @@ class Articles extends Component {
         return (
             <div>
                 {this.props.news.map((article) =>
-                    <Article key={article.title} title={article.title} summary={article.summary} image={article.image} url={article.url} tones={article.tones} />
+                    <Article key={article.title} title={article.title} summary={article.summary} image={article.image} url={article.url} tones={article.tones} date={article.date} />
                 )}
             </div>
         );
@@ -42,11 +43,14 @@ const Article = (props) => {
         <div className="m-3">
             <Card>
                 <CardBody>
-                    <CardImg src={props.image}/>
                     <a href={props.url} className="link">
                         <CardTitle>{props.title}</CardTitle>
                     </a>
+                    <CardImg src={props.image}/>
                     <CardText className="summary">{props.summary}</CardText>
+                    <CardText className="date">
+                        <Moment className="date" format="ddd MMM DD YYYY">{props.date}</Moment>
+                    </CardText>
                     {((props)=>{
                         if(props.tones.length){
                             return (

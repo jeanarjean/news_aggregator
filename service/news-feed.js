@@ -7,7 +7,7 @@ const newsapi = new NewsAPI('acb7dd9b7f5b40e5ae90aaea2b195c01');
 module.exports = {
   getNews: function(keyword,callback) {
     var news = []
-    newsapi.v2.everything({   
+    newsapi.v2.topHeadlines({   
       q: keyword,
       language: 'en',
       pageSize: 5,

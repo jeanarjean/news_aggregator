@@ -12,7 +12,7 @@ module.exports = {
       language: 'en',
       pageSize: 5,
       page: 1,
-      sortBy: 'relevancy',
+      sortBy: 'publishedAt'
     }).then(response => {
       if(response.status == "ok"){
         async.each(response.articles, function (item, callback){

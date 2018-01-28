@@ -9,7 +9,7 @@ class Articles extends Component {
         return (
             <div>
                 {this.props.articles.articles.map((article) =>
-                    <Article title={article.title} summary={article.summary} image={article.image} />
+                    <Article key={article.title} title={article.title} summary={article.summary} image={article.image} />
                 )}
                 <h1> criss</h1>
             </div>

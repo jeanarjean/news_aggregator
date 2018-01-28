@@ -10,7 +10,7 @@ module.exports = {
     newsapi.v2.topHeadlines({   
       q: keyword,
       language: 'en',
-      pageSize: 5,
+      pageSize: 10,
       page: 1,
       sortBy: 'publishedAt'
     }).then(response => {

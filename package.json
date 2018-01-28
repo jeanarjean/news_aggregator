@@ -16,6 +16,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "newsapi": "^2.1.0",
+    "node-uuid": "~1.4.8",
     "unfluff": "^3.0.0",
     "text-summary": "https://github.com/ddallaire/text-summary/tarball/master",
     "jaccard-similarity-sentences": "https://github.com/ddallaire/jaccard-similarity-sentences/tarball/master",

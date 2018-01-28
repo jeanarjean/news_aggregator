@@ -13,15 +13,16 @@
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "halogen": "^0.2.0",
+    "jaccard-similarity-sentences": "https://github.com/ddallaire/jaccard-similarity-sentences/tarball/master",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "newsapi": "^2.1.0",
     "node-uuid": "~1.4.8",
-    "unfluff": "^3.0.0",
-    "text-summary": "https://github.com/ddallaire/text-summary/tarball/master",
-    "jaccard-similarity-sentences": "https://github.com/ddallaire/jaccard-similarity-sentences/tarball/master",
-    "watson-developer-cloud": "~3.0.4",
+    "react-audioplayer": "^0.3.1",
     "react-spinners": "^0.2.5",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "text-summary": "https://github.com/ddallaire/text-summary/tarball/master",
+    "unfluff": "^3.0.0",
+    "watson-developer-cloud": "~3.0.4"
   }
 }

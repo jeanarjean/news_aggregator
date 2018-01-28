@@ -35,7 +35,7 @@ var mockArticleList = {
 /* GET home page. */
 router.get('/', function(req, res, next) {
     // TODO: Handle query, respond with real list of articles
-  res.send(JSON.stringify(mockArticleList));
+  res.json(mockArticleList);
 });
 
 module.exports = router;

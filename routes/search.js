@@ -1,3 +1,4 @@
+var searchService = require("../service/search-call.js");
 var express = require('express');
 var router = express.Router();
 
@@ -34,8 +35,9 @@ var mockArticleList = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    // TODO: Handle query, respond with real list of articles
-  res.json(mockArticleList);
+    searchService.searchNews(req.query.q, function (err, news) {
+        res.json(news);
+    });
 });
 
 module.exports = router;

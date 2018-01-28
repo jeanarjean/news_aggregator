@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {
-    Card, CardImg, CardText, CardBody, CardTitle,
-    CardSubtitle
+    Card, CardImg, CardText, CardBody, CardTitle
 } from 'reactstrap';
 
 class Articles extends Component {
     render() {
+        console.log(this.props.news);
         return (
             <div>
-                {this.props.articles.articles.map((article) =>
+                {this.props.news.map((article) =>
                     <Article key={article.title} title={article.title} summary={article.summary} image={article.image} />
                 )}
-                <h1> criss</h1>
+                <h1> {this.props.query}</h1>
             </div>
         );
     }

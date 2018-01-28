@@ -47,7 +47,6 @@ const Article = (props) => {
                         <CardTitle>{props.title}</CardTitle>
                     </a>
                     <CardText className="summary">{props.summary}</CardText>
-                    <CardText>{props.summary}</CardText>
                     {((props)=>{
                         if(props.tones.length){
                             return (

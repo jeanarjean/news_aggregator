@@ -35,7 +35,7 @@ class App extends Component {
                     text: this.getSummariesTitles(news)
                 }
 
-                if (payload.length > 0) {
+                if (payload.text !== "") {
                     request.post({method: 'POST', url: '/speech', body:JSON.stringify(payload), json:true}, function(err, response, body){
                         if(err){
                             console.error(err);
